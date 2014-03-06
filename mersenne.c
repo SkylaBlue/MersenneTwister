@@ -55,15 +55,15 @@ __int64 gen_seed()
  // Initialize the generator from a seed
 int *initialize_generator(int seed, int *ref) 
 {
-	 int i, index = 0;
+     int i, index = 0;
      MT[0] = seed;
      for (i = 1; i < 624; ++i)
-	 {
+     {
          MT[i] = 0x6c078965 * (0x6c078965 * (MT[i-1] ^ (MT[i-1] >> 30) + i) );
      }
 	 
-	 memcpy(ref, MT, sizeof(MT)); // Copy MT into return buffer, and return the buffer.
-	 return ref;
+     memcpy(ref, MT, sizeof(MT)); // Copy MT into return buffer, and return the buffer.
+     return ref;
  }
 
 // Generate an array of 624 untempered numbers
@@ -87,12 +87,12 @@ void generate_numbers()
 int extract_number() 
 {
 	
-	 int temp[624], index = 0;
-	 int *gentable = initialize_generator(gen_seed(), temp);
+     int temp[624], index = 0;
+     int *gentable = initialize_generator(gen_seed(), temp);
 	 
 	 // Generate new table
      if (index == 0) 
-	 {
+     {
          generate_numbers();
      }
 	
